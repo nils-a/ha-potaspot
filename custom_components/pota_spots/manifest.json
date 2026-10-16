@@ -1,0 +1,11 @@
+{
+  "domain": "pota_spots",
+  "name": "POTA Spots",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://gitlab.com/nils-a/ha-potaspot",
+  "issue_tracker": "https://gitlab.com/nils-a/ha-potaspot/-/work_items",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.1.0"
+}

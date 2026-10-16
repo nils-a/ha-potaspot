@@ -1,0 +1,33 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "POTA Spots",
+        "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+        "data": {
+          "name": "Name",
+          "scan_interval": "Abfrageintervall (Minuten, min. 1)",
+          "bands": "Bänder",
+          "modes": "Betriebsarten",
+          "programs": "Programme (Länderkennung)",
+          "parks": "Parks (Referenzen)"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "POTA Spots Filter",
+        "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+        "data": {
+          "scan_interval": "Abfrageintervall (Minuten, min. 1)",
+          "bands": "Bänder",
+          "modes": "Betriebsarten",
+          "programs": "Programme (Länderkennung)",
+          "parks": "Parks (Referenzen)"
+        }
+      }
+    }
+  }
+}
