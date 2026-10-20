@@ -11,12 +11,22 @@ CONF_BANDS = "bands"
 CONF_MODES = "modes"
 CONF_PROGRAMS = "programs"
 CONF_PARKS = "parks"
+CONF_MAX_AGE = "max_age"
 
 MIN_SCAN_INTERVAL = 1
 DEFAULT_SCAN_INTERVAL = 3
+# Minutes since the last spot; 0 = no age limit.
+DEFAULT_MAX_AGE = 10
 DEFAULT_NAME = "POTA Spots"
+DEFAULT_FILTER_NAME = "All spots"
+
+# Each filter is a config subentry of the single hub entry.
+SUBENTRY_FILTER = "filter"
 
 EVENT_NEW_SPOT = "pota_spots_new_spot"
+
+CARD_URL_BASE = "/pota_spots"
+CARD_FILENAME = "pota-spots-card.js"
 
 # Band name -> (lower kHz, upper kHz)
 BANDS: dict[str, tuple[float, float]] = {

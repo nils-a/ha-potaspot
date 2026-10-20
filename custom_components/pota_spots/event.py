@@ -17,7 +17,12 @@ async def async_setup_entry(
     entry: PotaConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    async_add_entities([PotaNewSpotEvent(entry.runtime_data, entry)])
+    coordinator = entry.runtime_data
+    for subentry_id in coordinator.filters:
+        async_add_entities(
+            [PotaNewSpotEvent(coordinator, subentry_id)],
+            config_subentry_id=subentry_id,
+        )
 
 
 class PotaNewSpotEvent(EventEntity):
@@ -29,16 +34,19 @@ class PotaNewSpotEvent(EventEntity):
     _attr_event_types = [EVENT_TYPE]
     _attr_should_poll = False
 
-    def __init__(self, coordinator: PotaSpotsCoordinator, entry: PotaConfigEntry) -> None:
+    def __init__(self, coordinator: PotaSpotsCoordinator, subentry_id: str) -> None:
         self._coordinator = coordinator
-        self._attr_unique_id = f"{entry.entry_id}_new_spot"
+        self._subentry_id = subentry_id
+        self._attr_unique_id = f"{subentry_id}_new_spot"
+        self._attr_device_info = coordinator.filters[subentry_id].device_info
 
     async def async_added_to_hass(self) -> None:
         self.async_on_remove(self._coordinator.async_add_listener(self._handle_update))
 
     @callback
     def _handle_update(self) -> None:
-        for spot in self._coordinator.new_spots:
+        new_spots = self._coordinator.new_spots.get(self._subentry_id, [])
+        for spot in new_spots:
             self._trigger_event(EVENT_TYPE, spot)
-        if self._coordinator.new_spots:
+        if new_spots:
             self.async_write_ha_state()

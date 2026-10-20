@@ -3,9 +3,14 @@
   "name": "POTA Spots",
   "codeowners": [],
   "config_flow": true,
-  "documentation": "https://gitlab.com/nils-a/ha-potaspot",
-  "issue_tracker": "https://gitlab.com/nils-a/ha-potaspot/-/work_items",
+  "dependencies": [
+    "frontend",
+    "http"
+  ],
+  "documentation": "https://github.com/nils-a/ha-potaspot",
   "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/nils-a/ha-potaspot/issues",
   "requirements": [],
-  "version": "0.1.0"
+  "single_config_entry": true,
+  "version": "0.1.1"
 }

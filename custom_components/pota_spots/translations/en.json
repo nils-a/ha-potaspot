@@ -3,30 +3,60 @@
     "step": {
       "user": {
         "title": "POTA Spots",
-        "description": "Leave a filter empty to match everything. Programs and parks are comma-separated (e.g. `DL, US` or `DE-0001, K-1234`).",
+        "description": "Spots are fetched once per interval and shared by all filters. Add filters afterwards via **Add filter**.",
         "data": {
-          "name": "Name",
-          "scan_interval": "Update interval (minutes, min. 1)",
-          "bands": "Bands",
-          "modes": "Modes",
-          "programs": "Programs (country prefixes)",
-          "parks": "Parks (references)"
+          "scan_interval": "Update interval (minutes, min. 1)"
         }
       }
+    },
+    "abort": {
+      "single_instance_allowed": "POTA Spots is already set up. Add more filters to the existing entry instead."
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "POTA Spots filters",
-        "description": "Leave a filter empty to match everything. Programs and parks are comma-separated (e.g. `DL, US` or `DE-0001, K-1234`).",
+        "title": "POTA Spots",
         "data": {
-          "scan_interval": "Update interval (minutes, min. 1)",
-          "bands": "Bands",
-          "modes": "Modes",
-          "programs": "Programs (country prefixes)",
-          "parks": "Parks (references)"
+          "scan_interval": "Update interval (minutes, min. 1)"
         }
+      }
+    }
+  },
+  "config_subentries": {
+    "filter": {
+      "entry_type": "Filter",
+      "initiate_flow": {
+        "user": "Add filter"
+      },
+      "step": {
+        "user": {
+          "title": "Filter",
+          "description": "Leave a filter empty to match everything. Programs and parks are comma-separated (e.g. `DL, US` or `DE-0001, K-1234`).",
+          "data": {
+            "name": "Name",
+            "max_age": "Active = spotted within the last (minutes, 0 = no limit)",
+            "bands": "Bands",
+            "modes": "Modes",
+            "programs": "Programs (country prefixes)",
+            "parks": "Parks (references)"
+          }
+        },
+        "reconfigure": {
+          "title": "Edit filter",
+          "description": "Leave a filter empty to match everything. Programs and parks are comma-separated (e.g. `DL, US` or `DE-0001, K-1234`).",
+          "data": {
+            "name": "Name",
+            "max_age": "Active = spotted within the last (minutes, 0 = no limit)",
+            "bands": "Bands",
+            "modes": "Modes",
+            "programs": "Programs (country prefixes)",
+            "parks": "Parks (references)"
+          }
+        }
+      },
+      "abort": {
+        "reconfigure_successful": "Filter updated."
       }
     }
   }

@@ -3,30 +3,60 @@
     "step": {
       "user": {
         "title": "POTA Spots",
-        "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+        "description": "Spots werden einmal pro Intervall abgerufen und von allen Filtern gemeinsam genutzt. Filter fügst du danach über **Filter hinzufügen** hinzu.",
         "data": {
-          "name": "Name",
-          "scan_interval": "Abfrageintervall (Minuten, min. 1)",
-          "bands": "Bänder",
-          "modes": "Betriebsarten",
-          "programs": "Programme (Länderkennung)",
-          "parks": "Parks (Referenzen)"
+          "scan_interval": "Abfrageintervall (Minuten, min. 1)"
         }
       }
+    },
+    "abort": {
+      "single_instance_allowed": "POTA Spots ist bereits eingerichtet. Füge stattdessen dem bestehenden Eintrag weitere Filter hinzu."
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "POTA Spots Filter",
-        "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+        "title": "POTA Spots",
         "data": {
-          "scan_interval": "Abfrageintervall (Minuten, min. 1)",
-          "bands": "Bänder",
-          "modes": "Betriebsarten",
-          "programs": "Programme (Länderkennung)",
-          "parks": "Parks (Referenzen)"
+          "scan_interval": "Abfrageintervall (Minuten, min. 1)"
         }
+      }
+    }
+  },
+  "config_subentries": {
+    "filter": {
+      "entry_type": "Filter",
+      "initiate_flow": {
+        "user": "Filter hinzufügen"
+      },
+      "step": {
+        "user": {
+          "title": "Filter",
+          "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+          "data": {
+            "name": "Name",
+            "max_age": "Aktiv = gespottet innerhalb der letzten (Minuten, 0 = keine Grenze)",
+            "bands": "Bänder",
+            "modes": "Betriebsarten",
+            "programs": "Programme (Länderkennung)",
+            "parks": "Parks (Referenzen)"
+          }
+        },
+        "reconfigure": {
+          "title": "Filter bearbeiten",
+          "description": "Leere Filter treffen auf alles zu. Programme und Parks werden kommagetrennt angegeben (z. B. `DL, US` oder `DE-0001, K-1234`).",
+          "data": {
+            "name": "Name",
+            "max_age": "Aktiv = gespottet innerhalb der letzten (Minuten, 0 = keine Grenze)",
+            "bands": "Bänder",
+            "modes": "Betriebsarten",
+            "programs": "Programme (Länderkennung)",
+            "parks": "Parks (Referenzen)"
+          }
+        }
+      },
+      "abort": {
+        "reconfigure_successful": "Filter aktualisiert."
       }
     }
   }

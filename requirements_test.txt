@@ -1,0 +1,4 @@
+# Pins Home Assistant to the matching version.
+pytest-homeassistant-custom-component==0.13.373
+# Needed because the integration depends on the frontend (dashboard card).
+home-assistant-frontend==20260930.4
