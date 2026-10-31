@@ -112,8 +112,11 @@ async def test_card_is_served(hass: HomeAssistant, aioclient_mock, hass_client):
     resp = await client.get("/pota_spots/pota-spots-card.js")
     assert resp.status == 200
     assert "pota-spots-card" in await resp.text()
+    resp = await client.get("/pota_spots/pota-spots-card-impl.js")
+    assert resp.status == 200
+    assert 'customElements.define("pota-spots-card"' in await resp.text()
     from homeassistant.components.frontend import DATA_EXTRA_MODULE_URL
-    assert "/pota_spots/pota-spots-card.js?v=0.1.1" in hass.data[DATA_EXTRA_MODULE_URL].urls
+    assert "/pota_spots/pota-spots-card.js?v=0.1.2" in hass.data[DATA_EXTRA_MODULE_URL].urls
 
 
 async def test_config_flow_creates_hub_with_default_filter(hass: HomeAssistant, aioclient_mock):

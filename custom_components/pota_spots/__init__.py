@@ -41,9 +41,10 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Serve the bundled dashboard card and load it in the frontend."""
     await _async_migrate_v1_entries(hass)
 
-    card_path = Path(__file__).parent / "frontend" / CARD_FILENAME
+    # Whole directory: the loader (CARD_FILENAME) imports the card from a second file.
+    frontend_path = Path(__file__).parent / "frontend"
     await hass.http.async_register_static_paths(
-        [StaticPathConfig(f"{CARD_URL_BASE}/{CARD_FILENAME}", str(card_path), True)]
+        [StaticPathConfig(CARD_URL_BASE, str(frontend_path), True)]
     )
     # Version in the URL so browsers pick up a new card after an update.
     integration = await async_get_integration(hass, DOMAIN)
